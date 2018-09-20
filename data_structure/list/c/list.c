@@ -11,7 +11,7 @@ list_t * list_create(void)
 }
 
 
-int list_insert_node(list_t *header , void *data)
+int list_append_node(list_t *header , void *data)
 {
     list_t *p = header;
     if (header == NULL) return 0;
@@ -28,19 +28,32 @@ int list_insert_node(list_t *header , void *data)
     return 1;
 }
 
+int list_insert_node(list_t *header , int index, void *data)
+{
+
+}
+
+int list_get_index(list_t *header, unsigned int index)
+{
+
+}
+
 int list_delete_node(list_t *header, int order)
 {
 
 }
 
-void list_traversal(list_t *header)
+void list_traversal(list_t *header, cb_func_t func)// TODO: recode by iterator
 {
-    list_t *p = header;
-    while (p->next != NULL)
+    if (header == NULL) return;
+
+    list_t *p = header->next;
+    do
     {
-        printf("%x\n", p->data);
+        func(p->data);
         p = p->next;
     }
+    while (p != NULL);
 }
 
 list_t * list_destroy(void)

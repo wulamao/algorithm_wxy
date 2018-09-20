@@ -6,5 +6,8 @@ typedef struct _node
     struct _node *next;
 } list_t;
 
+typedef void (* cb_func_t)(void *);
+
 list_t * list_create(void);
-int list_insert_node(list_t *header , void *data);
+int list_append_node(list_t *header, void *data);
+void list_traversal(list_t *header, cb_func_t func);

@@ -33,3 +33,4 @@
 
 ## 经典上古秘籍
     - [BK] Algorithm Design (2006) Jon Kleinberg
+    - 算法(第4版) [Algorithms Fourth Edition] [美] Robert Sedgewick，[美] Kevin Wayne 著，谢路云 译
