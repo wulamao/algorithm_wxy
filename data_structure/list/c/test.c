@@ -10,43 +10,61 @@ typedef struct student
 } student_t;
 
 
-void print_data(void *data)
+void print_data(student_t *data)
 {
-    student_t *stu = (student_t *)data;
-    printf("%d\n", stu->id);
-    printf("%d\n", stu->age);
+    printf("%d\n", data->id);
+    printf("%d\n", data->age);
+}
+
+void print_data_int(int *data)
+{
+    printf("%d\n", data);
 }
 
 int main(int argc, char const *argv[])
 {
-    student_t Tom;
-    Tom.id = 0x07;
-    Tom.age = 18;
+    // student_t Tom;
+    // Tom.id = 0x07;
+    // Tom.age = 18;
 
-    student_t Jerry;
-    Jerry.id = 0x08;
-    Jerry.age = 15;
+    // student_t Jerry;
+    // Jerry.id = 0x08;
+    // Jerry.age = 15;
 
-    list_t *stu_queue = list_create();
+    // list_t *stu_queue = list_new();
 
-    list_append_node(stu_queue, &Tom);
-    list_append_node(stu_queue, &Jerry);
-    list_append_node(stu_queue, &Tom);
+    // list_append_node(stu_queue, &Tom);
+    // list_append_node(stu_queue, &Jerry);
+    // list_append_node(stu_queue, &Tom);
+    // list_traversal(stu_queue, print_data);
+    // list_free(stu_queue);
 
 
-    list_traversal(stu_queue, print_data);
+    int int1 = 0;
+    int insert = 3;
+    list_t *int_queue = list_new();
+    list_append_node(int_queue, 0);
 
-    // list_t *p = stu_queue->next;
-    // student_t *stu;
-    // do
-    // {
-    //     stu = (student_t *)p->data;
-    //     printf("%d\n", stu->id);
-    //     printf("%d\n", stu->age);
-    //     p = p->next;
-    // }
-    // while (p != NULL);
+    // int to pointer
+    list_insert_node(int_queue, 2, 1);
+    list_insert_node(int_queue, 3, 2);
+    list_insert_node(int_queue, 4, 3);
+    list_insert_node(int_queue, 5, 4);
 
+    list_traversal(int_queue, print_data_int);
+ 
+    int temp;
+    temp = (int)list_get_index(int_queue,1);
+    printf("====\n%d\n", temp);
+    temp = (int)list_get_index(int_queue,2);
+    printf("%d\n", temp);
+    temp = (int)list_get_index(int_queue,3);
+    printf("%d\n", temp);
+    temp = (int)list_get_index(int_queue,4);
+    printf("%d\n", temp);
+
+    
+    list_free(int_queue);
 
     return 0;
 }

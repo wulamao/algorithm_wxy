@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "list.h"
+#include "list.h" //may recode by oop
 
-list_t * list_create(void)
+list_t * list_new(void)
 {
     list_t *header = (list_t *)malloc(sizeof(list_t));
     header->next = NULL;
@@ -30,22 +30,69 @@ int list_append_node(list_t *header , void *data)
 
 int list_insert_node(list_t *header , int index, void *data)
 {
+    list_t *p = header;
+   
+    if (header == NULL) return 0;
+    if (index <= 0) return 0;
+    
+    int i;
+    for (i=1;i<index;i++)
+    {
+        if (p->next == NULL) break; // index > max
+        p=p->next;
+    }
 
+    if (i == index)
+    {
+        list_t *new_p = (list_t *)malloc(sizeof(list_t));
+
+        new_p->data = data;
+        new_p->next = p->next;
+        p->next = new_p;
+    } 
+    else
+        return 0;
 }
 
-int list_get_index(list_t *header, unsigned int index)
+void *list_get_index(list_t *header, unsigned int index)
 {
+    list_t *p = header;
+    if (header == NULL) return 0;
+    if (index <= 0) return 0;
 
+    int i;
+    for (i=1;i<index;i++)
+    {
+        if (p->next == NULL) break; // index > max
+        p=p->next;
+    }
+
+    if (i == index)
+        return p->data;
+    else
+        return 0;
 }
 
-int list_delete_node(list_t *header, int order)
+int list_delete_node(list_t *header, int index)
 {
+    list_t *p = header;
+    if (header == NULL) return 0;
+    if (index <= 0) return 0;
 
+    int i;
+    for (i=1;i<index;i++)
+    {
+        if (p->next == NULL) return 0; // index > max
+        p=p->next;
+    }
+
+    p->next = p->next->next;
+    free(p->next);
 }
 
 void list_traversal(list_t *header, cb_func_t func)// TODO: recode by iterator
 {
-    if (header == NULL) return;
+    if (header == NULL || header->next == NULL) return;
 
     list_t *p = header->next;
     do
@@ -56,7 +103,11 @@ void list_traversal(list_t *header, cb_func_t func)// TODO: recode by iterator
     while (p != NULL);
 }
 
-list_t * list_destroy(void)
+list_t *list_free(list_t *header)
 {
-
+    list_t *p = header;
+    if (p->next != NULL)
+        list_free(p->next);
+    else
+        free(p);
 }
