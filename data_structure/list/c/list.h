@@ -3,6 +3,7 @@
 typedef struct _node
 {
     void *data; 
+    unsigned int length;
     struct _node *next;
 } list_t;
 
@@ -16,10 +17,19 @@ list_t * list_new(void);
 /*
     arg header:
     arg data:
-    return apped result
+    return none
 */
-int list_append_node(list_t *header, 
-                       void *data);
+void list_append_node(list_t *header, 
+                        void *data);
+
+/*
+    arg header:
+    arg data:
+    return 
+*/
+int list_prepend_node(list_t *header, 
+                        void *data);
+
 
 /*
     arg header:
@@ -48,4 +58,7 @@ void *list_get_index(list_t *header,
                unsigned int index);
 
 
-list_t *list_free(list_t *header);
+int list_delete_node(list_t *header, int index);
+
+
+void list_free(list_t **p);
