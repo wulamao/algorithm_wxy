@@ -7,6 +7,9 @@
     - 队列
     - 哈希表
     - 树/二叉树
+        - 平衡二叉树
+        - b树
+        - 红黑树
     - 堆
     - 图
 - 算法
@@ -35,3 +38,5 @@
 ## 经典上古秘籍
     - [BK] Algorithm Design (2006) Jon Kleinberg
     - 算法(第4版) [Algorithms Fourth Edition] [美] Robert Sedgewick，[美] Kevin Wayne 著，谢路云 译
+    - 剑指Offer
+    - Introduction to Algorithms [Third Edition]
