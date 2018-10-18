@@ -12,6 +12,7 @@
         - 红黑树
     - 堆
     - 图
+        - 二分图
   
 - 算法与设计
     - 字符串
@@ -41,3 +42,5 @@
     - 算法(第4版) [Algorithms Fourth Edition] [美] Robert Sedgewick，[美] Kevin Wayne 著，谢路云 译
     - 剑指Offer
     - Introduction to Algorithms [Third Edition]
+    - 组合数学（第五版）
+  
